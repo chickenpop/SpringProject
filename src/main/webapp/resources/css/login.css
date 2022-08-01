@@ -1,0 +1,44 @@
+h2, #labels > span {
+     text-align: center;
+ }
+ 
+ h2 {
+     margin-bottom: 30px;
+ }
+ 
+ #box {
+     width: 500px;
+     margin: 0 auto;
+ }
+ 
+ #login-box > input, h2 {
+     margin-bottom: 20px;
+ }
+ 
+ #login-box > input, #login-btn {
+     height: 40px;
+ }
+ 
+ 
+ #login-btn {
+     margin: 10px auto;
+     
+ }
+ 
+ #labels {
+     margin: 5px auto;
+ }
+ 
+ #labels span a {
+     margin-top: 40px;
+     margin-left: 40px;
+     margin-right: 30px;
+     color: black;
+ }
+ 
+ 
+ #login-error {
+     margin: 10px 0;
+     color: red;
+     text-align: center;
+ }

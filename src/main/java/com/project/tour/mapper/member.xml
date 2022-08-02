@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="member">
+	
+	
+	
+	<select id="checkUser" parameterType="com.project.tour.dto.MemberDTO" resultType="com.project.tour.dto.UserDTO">
+	
+		select 
+	           id
+	         , name
+	         , tel
+	         , gender
+	         , profile
+	         , regdate
+	         , active
+	      from tblUser
+	     where id = #{id} and pw = #{pw}
+	
+	</select>
+	
+	
+	<select id="checkAdmin" parameterType="com.project.tour.dto.MemberDTO" resultType="com.project.tour.dto.AdminDTO">
+	
+		select 
+               name
+             , id
+          from tblAdmin
+	     where id = #{id} and pw = #{pw}
+	
+	</select>
+	
+</mapper>

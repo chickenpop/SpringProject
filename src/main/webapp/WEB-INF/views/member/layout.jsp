@@ -10,9 +10,8 @@
 <link rel="stylesheet" href="/planitshare/resources/css/login.css" />
 </head>
 <body>
-
 	<main>
-		<tiles:insertAttribute name="headermenu"></tiles:insertAttribute>
+		<tiles:insertAttribute name="mainheader"></tiles:insertAttribute>
 		<section>
 		<tiles:insertAttribute name="content"></tiles:insertAttribute>
 		</section>

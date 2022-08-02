@@ -45,6 +45,7 @@ header > ul > li > a:hover {
 #header-logo > a > img {
     width: 100px;
     margin-top: 0;
+    height: 100px;
 }
 
 #header-menu {

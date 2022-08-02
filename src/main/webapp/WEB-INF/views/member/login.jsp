@@ -21,8 +21,8 @@
             </div>
             </form>
             <div id="labels">
-                <span><a href="/planitshare/idsearch.do">아이디 찾기</a></span>
-                <span><a href="/planitshare/pwsearch.do">비밀번호 찾기</a></span>
-                <span><a href="/planitshare/register.do">회원가입</a></span>
+                <span><a href="#">아이디 찾기</a></span>
+                <span><a href="#">비밀번호 찾기</a></span>
+                <span><a href="#">회원가입</a></span>
             </div>
         </div>

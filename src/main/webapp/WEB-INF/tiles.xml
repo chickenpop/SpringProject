@@ -4,12 +4,18 @@
 
 <tiles-definitions>
 	
-	<definition name="main" template="/WEB-INF/views/main.jsp"></definition>
+	<definition name="main" template="/WEB-INF/views/main.jsp">
+		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
+		<put-attribute name="mainheader" value="/WEB-INF/views/inc/mainheader.jsp"></put-attribute>
+	</definition>
 	
 	<definition name="member.*" template="/WEB-INF/views/member/layout.jsp">
 		<put-attribute name="asset" value="/WEB-INF/views/inc/asset.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/views/member/{1}.jsp"></put-attribute>		
-		<put-attribute name="headermenu" value="/WEB-INF/views/inc/headermenu.jsp"></put-attribute>
+		<put-attribute name="mainheader" value="/WEB-INF/views/inc/mainheader.jsp"></put-attribute>
+	</definition>
+
+	<definition name="city.*.*" template="/WEB-INF/views/city/{1}/layout.jsp">
 	</definition>
 	
 </tiles-definitions>

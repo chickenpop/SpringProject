@@ -5,6 +5,9 @@
 <configuration>
 
 	<typeAliases>
+		  <typeAlias type="com.project.tour.dto.UserDTO" alias="udto"/>
+		  <typeAlias type="com.project.tour.dto.MemberDTO" alias="mdto"/>
+		    <typeAlias type="com.project.tour.dto.AdminDTO" alias="adto"/>
 	</typeAliases>
 
 </configuration>

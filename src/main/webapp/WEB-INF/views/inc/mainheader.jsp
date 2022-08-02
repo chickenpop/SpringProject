@@ -2,11 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header>
-   <ul id="header-menu">
-       <li><a href="/planitshare/main">홈</a></li>
-       <li><a href="/planitshare/city">여행지</a></li>
-       <li><a href="/planitshare/plan">여행일정</a></li>
-   </ul>
+   
+   <div id="header-logo"><a href="/planitshare/main"><img id="logo" src="/planitshare/resources/image/logo.png" alt="logoImg"></a></div> 
+	<ul id="header-menu">
+	    <li><a href="/planitshare/main">홈</a></li>
+	    <li><a href="/planitshare/city/tour">여행지</a></li>
+	    <li><a href="/planitshare/plan">여행일정</a></li>
+	</ul>
    
    <!-- 로그인 안 했을 때 -->
    <c:if test="${empty auth}">
@@ -25,7 +27,7 @@
 		   <c:if test="${auth.loginmode eq 'user'}">
 		   <div id="header-profile">
 		       <div id="image-container">
-		       	   <div id="profile"><img src="/planitshare/userimage/${auth.profile}" alt="" ></div>
+		       	   <div id="profile"><img src="/planitshare/resources/image/${auth.profile}" alt="" ></div>
 		       </div>
 		       <div id="login-info">
 		       	   <div id="name">${auth.name}님</div>	       	   
@@ -41,7 +43,7 @@
 	           
 		    <div id="header-profile">
 		       <div id="image-container">
-		       	   <div id="profile"><img src="/planitshare/resuources/image/admin.png" alt="amdin-profile" ></div>
+		       	   <div id="profile"><img src="/planitshare/resources/image/admin.png" alt="amdin-profile" ></div>
 		       </div>
 		       <div id="login-info">
 		       	   <div id="name">관리자님</div>

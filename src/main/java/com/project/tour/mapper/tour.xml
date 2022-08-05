@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tour">
+	
+	<!-- 카테고리 이름 전체 조회 -->
+	<select id="tourCategorylist" resultType="String">
+	
+		select category from tbltourcategory
+	
+	</select>
+
+	<!-- 여행 지역 전체 조회  -->
+	<select id="cityNameList" resultType="com.project.tour.dto.CityDTO">
+	
+		select  
+               seq
+             , name
+          from tblCity
+	
+	</select>
+	
+	<!-- 여행지역 인기순위 조회 -->
+	<select id="tourList" resultType="com.project.tour.dto.TourDTO">
+	
+		select
+               t.seq
+             , t.placename
+             , t.address
+             , t.open
+             , t.close
+             , t.image
+             , t.cseq
+             , tc.category
+             , (select count(*) from tblLikeTour lt where lt.tseq = t.seq) as likeCnt
+             , (select count(*) from tblTourReview tr where tr.tseq = t.seq) as reviewCnt
+             , (select round(avg(tr.star), 2) from tblTourReview tr where tr.tseq = t.seq) as reviewAvg
+          from tblTour t 
+         inner join tblCity c on t.cseq = c.seq
+         inner join tblTourCategory tc on t.tcseq = tc.seq 
+         order by likeCnt desc
+	
+	</select>
+	
+	<!-- 여행지역 및 카테고리 검색 -->
+	<select id="searchTour" parameterType="com.project.tour.dto.SearchDTO" resultType="com.project.tour.dto.TourDTO">
+	
+        select
+               t.seq
+             , t.placename
+             , t.address
+             , t.open
+             , t.close
+             , t.image
+             , t.cseq
+             , tc.category
+             , (select count(*) from tblLikeTour lt where lt.tseq = t.seq) as likeCnt
+             , (select count(*) from tblTourReview tr where tr.tseq = t.seq) as reviewCnt
+             , (select round(avg(tr.star), 2) from tblTourReview tr where tr.tseq = t.seq) as reviewAvg
+          from tblTour t 
+         inner join tblCity c on t.cseq = c.seq
+         inner join tblTourCategory tc on t.tcseq = tc.seq 
+         where c.seq = #{cityname} and tc.category = #{keywordtype} and t.placename like '%' || #{keyword} || '%' 
+	
+	</select>
+	
+	
+	<select id="tour" parameterType="com.project.tour.dto.TourDTO" resultType="com.project.tour.dto.TourDTO">
+	
+		select
+               t.seq
+             , t.placename
+             , t.address
+             , t.open
+             , t.close
+             , t.image
+             , t.cseq
+             , tc.category
+             , (select count(*) from tblLikeTour lt where lt.tseq = t.seq) as likeCnt
+             , (select count(*) from tblTourReview tr where tr.tseq = t.seq) as reviewCnt
+             , (select round(avg(tr.star), 2) from tblTourReview tr where tr.tseq = t.seq) as reviewAvg
+          from tblTour t 
+         inner join tblCity c on t.cseq = c.seq
+         inner join tblTourCategory tc on t.tcseq = tc.seq 
+         where t.seq = #{seq} and c.seq = #{cseq}
+	
+	</select>
+	
+	
+	<select id="tourReview" parameterType="com.project.tour.dto.TourDTO" resultType="com.project.tour.dto.TourReviewDTO">
+		
+		select  
+               seq
+             , content
+             , star
+             , regdate
+             , id
+             , image
+          from tblTourReview 
+         where tseq = #{seq}
+         order by regdate desc
+	
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+

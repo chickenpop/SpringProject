@@ -15,6 +15,7 @@
 				<button type="submit" class="btn btn-secondary">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
+				<input type="hidden" name="sort" value="likeCnt" />
 			</div>
 		</form>
 		<div class="container h-100">

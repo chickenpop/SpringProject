@@ -8,5 +8,6 @@ public class SearchDTO {
 	private int cityname;
 	private String keywordtype;
 	private String keyword;
+	private String sort;
 	
 }

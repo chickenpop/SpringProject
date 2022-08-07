@@ -61,11 +61,12 @@
           from tblTour t 
          inner join tblCity c on t.cseq = c.seq
          inner join tblTourCategory tc on t.tcseq = tc.seq 
-         where c.seq = #{cityname} and tc.category = #{keywordtype} and t.placename like '%' || #{keyword} || '%' 
+         where c.seq = #{cityname} and tc.category = #{keywordtype} and t.placename like '%' || #{keyword} || '%'  
+         order by ${sort} desc
 	
 	</select>
 	
-	
+	<!-- 여행지 역 관광장소 검색  -->
 	<select id="tour" parameterType="com.project.tour.dto.TourDTO" resultType="com.project.tour.dto.TourDTO">
 	
 		select
@@ -80,6 +81,8 @@
              , (select count(*) from tblLikeTour lt where lt.tseq = t.seq) as likeCnt
              , (select count(*) from tblTourReview tr where tr.tseq = t.seq) as reviewCnt
              , (select round(avg(tr.star), 2) from tblTourReview tr where tr.tseq = t.seq) as reviewAvg
+             , t.lat
+             , t.lng
           from tblTour t 
          inner join tblCity c on t.cseq = c.seq
          inner join tblTourCategory tc on t.tcseq = tc.seq 
@@ -87,7 +90,7 @@
 	
 	</select>
 	
-	
+	<!-- 선택한 관광명소의 리뷰 -->
 	<select id="tourReview" parameterType="com.project.tour.dto.TourDTO" resultType="com.project.tour.dto.TourReviewDTO">
 		
 		select  

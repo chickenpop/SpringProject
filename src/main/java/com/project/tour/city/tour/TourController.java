@@ -59,7 +59,7 @@ public class TourController {
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("rlist", rlist);
-		model.addAttribute("sdto", tdto.getSeq());
+		model.addAttribute("sdto", tdto);
 		
 		return "city.tour.view";
 	}

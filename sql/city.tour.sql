@@ -18,7 +18,8 @@ select
   from tblTour t 
  inner join tblCity c on t.cseq = c.seq
  inner join tblTourCategory tc on t.tcseq = tc.seq 
- where c.seq = 1 and tc.category = '랜드마크' and t.placename like '%거리%';
+ where c.seq = 1 and tc.category = '전시관' and t.placename like '%박물관%'
+ order by likeCnt desc;
  
  
 
@@ -36,11 +37,13 @@ select
        tc.category, 
        (select count(*) from tblLikeTour lt where lt.tseq = t.seq) as likeCnt, 
        (select count(*) from tblTourReview tr where tr.tseq = t.seq) as reviewCnt, 
-       (select round(avg(tr.star), 2) from tblTourReview tr where tr.tseq = t.seq) as reviewAvg
+       (select round(avg(tr.star), 2) from tblTourReview tr where tr.tseq = t.seq) as reviewAvg,
+       t.lat,
+       t.lng
   from tblTour t 
  inner join tblCity c on t.cseq = c.seq
  inner join tblTourCategory tc on t.tcseq = tc.seq 
- where t.seq = 1 and c.seq = 2;
+ where t.seq = 1 and c.seq = 1;
  
  
 select  

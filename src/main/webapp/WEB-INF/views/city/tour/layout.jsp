@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>PlanitShare</title>
 <link rel="stylesheet" href="/planitshare/resources/css/tour.css" />
-<link rel="stylesheet" href="/planitshare/asset/css/rateit.css" />
+<link rel="stylesheet" href="/planitshare/resources/css/rateit.css" />
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=45bff8e1f05130c0cfcaa2b32275bf5e"></script>
 <tiles:insertAttribute name="asset"></tiles:insertAttribute>
 </head>

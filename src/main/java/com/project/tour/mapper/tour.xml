@@ -93,15 +93,16 @@
 	<!-- 선택한 관광명소의 리뷰 -->
 	<select id="tourReview" parameterType="com.project.tour.dto.TourDTO" resultType="com.project.tour.dto.TourReviewDTO">
 		
-		select  
-               seq
-             , content
-             , star
-             , regdate
-             , id
-             , image
-          from tblTourReview 
-         where tseq = #{seq}
+		select 
+               tr.seq
+             , tr.content
+             , tr.star
+             , tr.regdate
+             , tr.id
+             , ri.image
+          from tblTourReview tr
+          left outer join tblreviewimg ri on tr.seq = ri.tseq
+         where tr.tseq = #{seq} 
          order by regdate desc
 	
 	</select>

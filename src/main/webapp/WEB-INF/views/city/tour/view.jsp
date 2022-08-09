@@ -27,33 +27,27 @@
 				</div>
 			</div>
 		</div>
-	<form id="likeform">
-    	<button type="button" class="btn float-right" onclick="like(${dto.seq});"><i id="like" class="fa-solid fa-heart"></i></button> 
-    </form>
     </div>
 
 	       
       <!-- 리뷰 등록 -->
-    <form method="POST" action="/planitshare/city/tourreviewadd" enctype="multipart/form-data">
-	<table class="table table-borderless" style="margin-top: 50px;">
+    <form method="POST" action="/planitshare/city/tour/reviewAdd" enctype="multipart/form-data">
+	<table class="table table-borderless" style="margin-left: auto; margin-right: auto; width: 800px;">
 		<tr>
 			<td>
-				<div class="rateit" data-rateit-resetable="false" data-rateit-mode="font" data-rateit-icon="" style="font-family:fontawesome"></div>
 				<input type="file" name="attach">
 			</td>
 		</tr>
 		<tr>
-			<td><textarea class="form-control" name="content" required placeholder="리뷰를 입력해주세요"></textarea></td>
+			<td><textarea class="form-control" name="content" onclick="userCheck(${auth.id});" required placeholder="리뷰를 입력해주세요" style="resize: none;"></textarea></td>
 			<td>
 				<input type="submit" value="리뷰등록" class="btn btn-secondary">
 			</td>
 		</tr>
 	</table>
-	<input type="hidden" name="star">
 	<input type="hidden" name="seq"  value="${sdto.seq}">
-	<input type="hidden" name="cseq" value="${sdto.cseq}">
 	</form>
-
+	
 	<table class="table table-bordered" style="width: 1000px; margin-left: auto; margin-right: auto;">
 		<c:forEach items="${rlist}" var="rdto">
 			<c:if test="${empty rdto.image}">
@@ -96,10 +90,20 @@
 		</c:forEach>
 	</table>
 	
+
+
 	<div id="map" style="width:70%;height:500px; margin : 0 auto;"></div>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+	<script src="/planitshare/asset/js/jquery.rateit.js"></script> 
 	<script>
-		
+	
+		function userCheck(auth){
+			if(auth == null){
+				alert('로그인 이후 이용해주세요');
+			}
+		}
+	
 		$(document).ready(function(){
 	
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

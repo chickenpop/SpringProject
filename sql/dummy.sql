@@ -75,7 +75,7 @@ insert into tblTour(seq, placeName, address, image, open, close, tcseq, cseq, la
 insert into tblLikeTour (seq, id, tseq) values (seqLikeTour.nextVal, 'Devid', 21);
 insert into tblLikeTour (seq, id, tseq) values (seqLikeTour.nextVal, 'Robert', 21);
 
-insert into tblTourReview (seq, content, star, tseq, id, image) values (seqTourReview.nextVal, '나쁘지 않았어요', 4.0, 21,'Devid', null);
+insert into tblTourReview (seq, content, star, tseq, id, image) values (seqTourReview.nextVal, '나쁘지 않았어요', 4.0, 21,'Devid');
 
 
 insert into tblLikeTour (seq, id, tseq) values (seqLikeTour.nextVal, 'Devid', 22);
@@ -101,3 +101,7 @@ insert into tblLikeTour (seq, id, tseq) values (seqLikeTour.nextVal, 'Kevin', 24
 
 insert into tblTourReview (seq, content, star, tseq, id, image) values (seqTourReview.nextVal, '별로에요', 2.0, 24,'Robert', null);
 insert into tblTourReview (seq, content, star, tseq, id, image) values (seqTourReview.nextVal, '오후에 오시면 좋아요', 3.0, 24,'Joseph', null);
+
+
+-- 리뷰 사진 테스트
+insert into tblreviewimg (seq, tseq, image) values (seqReviewImg.nextVal, 86,'거리.jpg');

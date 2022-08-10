@@ -35,6 +35,7 @@
 	<table class="table table-borderless" style="margin-left: auto; margin-right: auto; width: 800px;">
 		<tr>
 			<td>
+				<div class="rateit" data-rateit-resetable="false" data-rateit-mode="font" data-rateit-icon="" style="font-family:fontawesome"></div>
 				<input type="file" name="attach">
 			</td>
 		</tr>
@@ -45,7 +46,10 @@
 			</td>
 		</tr>
 	</table>
-	<input type="hidden" name="seq"  value="${sdto.seq}">
+	<input type="hidden" name="star">
+	<input type="hidden" name="seq" value="${sdto.seq}">
+	<input type="hidden" name="cseq" value="${sdto.cseq}">
+	<input type="hidden" name="id"  value="${auth.id}">
 	</form>
 	
 	<table class="table table-bordered" style="width: 1000px; margin-left: auto; margin-right: auto;">
@@ -95,15 +99,73 @@
 	<div id="map" style="width:70%;height:500px; margin : 0 auto;"></div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-	<script src="/planitshare/asset/js/jquery.rateit.js"></script> 
+	<script src="/planitshare/resources/js/jquery.rateit.js"></script> 
 	<script>
+	
+		var configFontAwesome = {
+		 custom: {
+		     families: ['fontawesome'],
+		     urls: ['https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css']
+		     },
+		     fontactive: function () {
+		         $('.rateit-fa').rateit();
+		     }
+		 };
+		WebFont.load(configFontAwesome);
+		
+		$(".rateit").bind('rated', function (event, value) { 
+			
+			$('input[name=star]').val(value);
+			
+		});
+		
+		$('.rateit').ready(function() {
+			
+			<c:forEach items="${rlist}" var="dto" varStatus="status">
+			$('.rateit').eq(${status.index}+1).rateit('value', '${dto.star}');
+			</c:forEach>
+			
+		});
 	
 		function userCheck(auth){
 			if(auth == null){
 				alert('로그인 이후 이용해주세요');
 			}
 		}
+		
+		function delTourReview(seq) {
+			
+			if(confirm('리뷰를 삭제하시겠습니까?')){
+			
+				let tr = $(event.target).parent().parent().parent().parent();
+
+				$.ajax({
+					type: 'POST',
+					url: '/planitshare/city/tour/reviewdel',
+					data: 'seq=' + seq,
+					dataType: 'json',
+					success: function(result) {
+											
+						if (result == '1') {
+							
+							tr.remove();
+							
+						} else {
+							console.log(result);
+							alert('리뷰 삭제에 실패했습니다.');
+						}
+						
+					}, 
+					error: function(result) {
+						console.log(result);
+					}
+				});
+			}
+			
+		}
 	
+
+		
 		$(document).ready(function(){
 	
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

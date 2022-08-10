@@ -49,4 +49,24 @@ public class TourDAOImpl implements TourDAO {
 		return template.selectList("tour.tourReview", tdto);
 	}
 	
+	@Override
+	public int putTourReview(TourReviewDTO rdto) {
+		return template.insert("tour.putTourReview", rdto);
+	}
+	
+	@Override
+	public int delTourReview(String seq) {
+		return template.delete("tour.delTourReview", seq);
+	}
+	
+	@Override
+	public int editTourReview(TourReviewDTO rdto) {
+		return template.update("tour.editTourReview", rdto);
+	}
+	
+	@Override
+	public int putTourReviewImg(String filename) {
+		return template.insert("tour.putTourReviewImg", filename);
+	}
+	
 }

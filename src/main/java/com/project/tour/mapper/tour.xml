@@ -107,6 +107,30 @@
 	
 	</select>
 	
+	<insert id="putTourReview" parameterType="com.project.tour.dto.TourReviewDTO">
+	
+		insert into tblTourReview (seq, content, star, tseq, id) 
+		values (seqTourReview.nextVal, #{content}, ${star}, ${seq}, #{id})
+	
+	</insert>
+	
+	<insert id="putTourReviewImg" parameterType="String">
+	
+		insert into tblreviewimg (seq, tseq, image) values (seqReviewImg.nextVal, (select max(seq) from tblTourReview), #{image})
+	
+	</insert>
+	
+	<delete id="delTourReview" parameterType="String">
+		
+		delete tblTourReview where seq = #{seq}
+	
+	</delete>
+	
+	<update id="editTourReview" parameterType="com.project.tour.dto.TourReviewDTO">
+	
+		update tblTourReview set content = #{content}, star = ${star} where seq = #{seq}
+		
+	</update>
 	
 </mapper>
 

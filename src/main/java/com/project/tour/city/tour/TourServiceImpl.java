@@ -48,4 +48,24 @@ public class TourServiceImpl implements TourService {
 		return dao.getTourReview(tdto);
 	}
 	
+	@Override
+	public int putTourReview(TourReviewDTO rdto) {
+		return dao.putTourReview(rdto);
+	}
+	
+	@Override
+	public int delTourReview(String seq) {
+		return dao.delTourReview(seq);
+	}
+	
+	@Override
+	public int editTourReview(TourReviewDTO rdto) {
+		return dao.editTourReview(rdto);
+	}
+	
+	@Override
+	public int putTourReviewImg(String filename) {
+		return dao.putTourReviewImg(filename);
+	}
+	
 }

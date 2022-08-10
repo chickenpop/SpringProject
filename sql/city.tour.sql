@@ -46,6 +46,8 @@ select
  where t.seq = 1 and c.seq = 1;
  
  
+ 
+-- erd 변경 전 리뷰 조회
 select  
        seq,
        content, 
@@ -53,9 +55,41 @@ select
        regdate,
        id,
        image
- from tblTourReview where tseq = 2 order by regdate desc;
+ from tblTourReview where tseq = 1 order by regdate desc;
  
  
+-- erd 변경 후 리뷰 조회
+select 
+       tr.seq,
+       tr.content, 
+       tr.star,
+       tr.regdate,
+       tr.id,
+       ri.image
+  from tblTourReview tr
+ left outer join tblreviewimg ri on tr.seq = ri.tseq
+ where tr.tseq = 1 order by regdate desc;
+
+
+-- 리뷰 등록
+insert into tblTourReview (seq, content, star, tseq, id) values (seqTourReview.nextVal, '나쁘지 않았어요', 4.0, 21,'Devid');
+
+-- 이미지 있는 리뷰 등록
+insert into tblTourReview (seq, content, star, tseq, id) values (seqTourReview.nextVal, '나쁘지 않았어요', 4.0, 21,'Devid');
+insert into tblreviewimg (seq, tseq, image) values (seqReviewImg.nextVal, (select max(seq) from tblTourReview), '거리.jpg');
+
+select * from tblTourReview order by regdate;
+
+
+
+
+
+
+
+
+
+
+
  
  
  

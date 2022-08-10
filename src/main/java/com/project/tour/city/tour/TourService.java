@@ -20,5 +20,13 @@ public interface TourService {
 	TourDTO getTour(TourDTO tdto);
 
 	List<TourReviewDTO> getTourReview(TourDTO tdto);
+
+	int putTourReview(TourReviewDTO rdto);
+
+	int delTourReview(String seq);
+
+	int editTourReview(TourReviewDTO rdto);
+
+	int putTourReviewImg(String filename);
 	
 }

@@ -12,4 +12,6 @@ public class TourReviewDTO {
 	private String id;
 	private String image;
 	
+	private String tseq;
+	
 }

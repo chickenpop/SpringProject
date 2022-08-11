@@ -17,4 +17,6 @@ public class UserDTO {
 	private String reviewcnt;
 	private String commentcnt;
 	
+	private String keyword;
+	
 }

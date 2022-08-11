@@ -28,5 +28,9 @@ public interface TourService {
 	int editTourReview(TourReviewDTO rdto);
 
 	int putTourReviewImg(String filename);
+
+	int delTourReviewImg(String seq);
+
+	String getTourReviewImg(String seq);
 	
 }

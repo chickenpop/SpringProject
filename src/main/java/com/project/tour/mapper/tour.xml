@@ -122,13 +122,25 @@
 	
 	<delete id="delTourReview" parameterType="String">
 		
-		delete tblTourReview where seq = #{seq}
+		delete tblTourReview where seq = ${seq}
+	
+	</delete>
+	
+	<select id="getTourReviewImg" parameterType="String" resultType="String">
+	
+		select image from tblreviewimg where tseq = ${seq}
+	
+	</select>
+	
+	<delete id="delTourReviewImg" parameterType="String">
+	
+		delete tblreviewimg where tseq = ${seq}
 	
 	</delete>
 	
 	<update id="editTourReview" parameterType="com.project.tour.dto.TourReviewDTO">
 	
-		update tblTourReview set content = #{content}, star = ${star} where seq = #{seq}
+		update tblTourReview set content = #{content}, star = ${star} where seq = ${seq}
 		
 	</update>
 	

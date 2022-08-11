@@ -68,4 +68,14 @@ public class TourServiceImpl implements TourService {
 		return dao.putTourReviewImg(filename);
 	}
 	
+	@Override
+	public int delTourReviewImg(String seq) {
+		return dao.delTourReviewImg(seq);
+	}
+	
+	@Override
+	public String getTourReviewImg(String seq) {
+		return dao.getTourReviewImg(seq);
+	}
+	
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -128,10 +129,23 @@ public class TourController {
 	}
 	
 	@PostMapping(value="/city/tour/reviewdel")
-	public void reviewDel(String seq, Model model, HttpServletResponse resp) throws IOException {
+	public void reviewDel(String seq, Model model, HttpServletResponse resp, HttpServletRequest req) throws IOException {
+		
+		String isImg = service.getTourReviewImg(seq);
+		
+		if(isImg != null || !(" ".equals(isImg))) {	
+			
+			//파일 경로 지정
+			String path = req.getRealPath("/resources/userimage/tour");
+			path += "/" + isImg;
+			
+			File file = new File(path);
+			file.delete();
+			
+			service.delTourReviewImg(seq);
+		}		
 		
 		int result = service.delTourReview(seq);
-		
 		Gson gson = new Gson();
 		
 		resp.getWriter().print(gson.toJson(result));

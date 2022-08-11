@@ -28,6 +28,10 @@ public interface TourDAO {
 
 	int editTourReview(TourReviewDTO rdto);
 
-	int putTourReviewImg(String filename);	
+	int putTourReviewImg(String filename);
+
+	int delTourReviewImg(String seq);
+
+	String getTourReviewImg(String seq);	
 	
 }

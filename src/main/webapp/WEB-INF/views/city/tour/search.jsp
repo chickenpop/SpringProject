@@ -25,17 +25,17 @@
 				<button type="submit" class="btn btn-secondary">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
+				<input type="hidden" name="sort" value="likeCnt" />
 			</div>
 		</form>
 		
 		<div class="container h-100">
-		<ul class="sort-list">
-			<li><a href="/planitshare/city/tour/search?cityname=1&keywordtype=전시관&keyword=박물관&sort=likeCnt" id="likeCnt" >인기등록순</a></li>
-			<li><a href="/planitshare/city/tour/search?cityname=1&keywordtype=전시관&keyword=박물관&sort=reviewAvg" id="reviewAvg" >별점순</a></li>
-			<li><a href="/planitshare/city/tour/search?cityname=1&keywordtype=전시관&keyword=박물관&sort=reviewCnt" id="reviewCnt">리뷰많은순</a></li>
-		</ul>
-		
-		
+	<c:if test="${not empty tour}">
+	<ul class="sort-list">
+		<li><a href="/planitshare/city/tour/search?cityname=1&keywordtype=전시관&keyword=박물관&sort=likeCnt" id="likeCnt" >인기등록순</a></li>
+		<li><a href="/planitshare/city/tour/search?cityname=1&keywordtype=전시관&keyword=박물관&sort=reviewAvg" id="reviewAvg" >별점순</a></li>
+		<li><a href="/planitshare/city/tour/search?cityname=1&keywordtype=전시관&keyword=박물관&sort=reviewCnt" id="reviewCnt">리뷰많은순</a></li>
+	</ul>
 	<c:forEach items="${tour}" var="dto">
 		<a href="/planitshare/city/tour/view?seq=${dto.seq}&cseq=${dto.cseq}">
 			<div class="col d-flex justify-content-center align-items-center">
@@ -63,6 +63,11 @@
 		</a>
 	</c:forEach>
 		<div style="text-align: center">페이지바</div>
+	</c:if>
+
+	<c:if test="${empty tour}">
+		<h3>검색 결과가 없습니다</h4>
+	</c:if>
 	</div>
 	
 	<script>

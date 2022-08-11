@@ -69,4 +69,14 @@ public class TourDAOImpl implements TourDAO {
 		return template.insert("tour.putTourReviewImg", filename);
 	}
 	
+	@Override
+	public int delTourReviewImg(String seq) {
+		return template.delete("tour.delTourReviewImg", seq);
+	}
+	
+	@Override
+	public String getTourReviewImg(String seq) {
+		return template.selectOne("tour.getTourReviewImg", seq);
+	}
+	
 }

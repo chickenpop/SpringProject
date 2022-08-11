@@ -48,7 +48,7 @@
 		       <div id="login-info">
 		       	   <div id="name">관리자님</div>
 		       	    <div>
-		               <a href="/planitshare/admin/recommendcitylist">관리자페이지</a>
+		               <a href="/planitshare/admin/userlist">관리자페이지</a>
 		               <a href="/planitshare/member/logout">로그아웃</a>
 		           </div>
 		       </div>

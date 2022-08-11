@@ -68,7 +68,7 @@ select
        ri.image
   from tblTourReview tr
  left outer join tblreviewimg ri on tr.seq = ri.tseq
- where tr.tseq = 1 order by regdate desc;
+ where tr.tseq = 168 order by regdate desc;
 
 
 -- 리뷰 등록
@@ -79,9 +79,19 @@ insert into tblTourReview (seq, content, star, tseq, id) values (seqTourReview.n
 insert into tblreviewimg (seq, tseq, image) values (seqReviewImg.nextVal, (select max(seq) from tblTourReview), '거리.jpg');
 
 select * from tblTourReview order by regdate;
+select * from tblreviewimg order by tseq;
 
 
+-- 리뷰 삭제
+delete tblTourReview where seq = 1;
 
+--리뷰 이미지 삭제
+select image from tblreviewimg where tseq = 175;
+delete tblreviewimg where tseq = 175;
+
+
+-- 리뷰 변경
+update tblTourReview set content = '', star = 3 where seq = 1;
 
 
 
